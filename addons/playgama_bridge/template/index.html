@@ -76,13 +76,6 @@
                 z-index: 1;
             }
 
-            #banner-container {
-                position: absolute;
-                bottom: 0px;
-                width: 100%;
-                height: 90px;
-                display: none;
-            }
         </style>
         $GODOT_HEAD_INCLUDE
     </head>
@@ -100,8 +93,6 @@
             <progress id="status-progress"></progress>
             <div id="status-notice"></div>
         </div>
-
-        <div id="banner-container"></div>
 
         <script type="text/javascript" src="./playgama-bridge.js"></script>
         <script src="$GODOT_URL"></script>
@@ -212,16 +203,6 @@
                     }
                     
                     bridge.initialize(bridgeOptions).then(() => {
-                        let bannerContainer = document.getElementById('banner-container')
-
-                        if (bridge.platform.id === bridge.PLATFORM_ID.CRAZY_GAMES || bridge.platform.id === bridge.PLATFORM_ID.GAME_DISTRIBUTION) {
-                            bridge.advertisement.on(bridge.EVENT_NAME.BANNER_STATE_CHANGED, state => {
-                                bannerContainer.style.display = state === 'loading' || state === 'shown' ? 'block' : 'none'
-                            })
-                        } else {
-                            bannerContainer.style.display = 'none'
-                        }
-
                         if (bridge.platform.id === bridge.PLATFORM_ID.GAME_DISTRIBUTION) {
                             bridge.advertisement.showInterstitial()
                         }
