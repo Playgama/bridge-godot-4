@@ -38,11 +38,11 @@ func _on_show_banner_button_pressed():
 			}
 		"crazy_games":
 			options = {
-				"containerId": "div-container-id"
+				"position": "top"
 			}
 		"game_distribution":
 			options = {
-				"containerId": "div-container-id"
+				"position": "right"
 			}
 	
 	Bridge.advertisement.show_banner(options)
