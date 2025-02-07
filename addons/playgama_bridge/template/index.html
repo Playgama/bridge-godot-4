@@ -203,10 +203,6 @@
                     }
                     
                     bridge.initialize(bridgeOptions).then(() => {
-                        if (bridge.platform.id === bridge.PLATFORM_ID.GAME_DISTRIBUTION) {
-                            bridge.advertisement.showInterstitial()
-                        }
-
                         engine.startGame({
                             'onProgress': function (current, total) {
                                 if (current > 0 && total > 0) {
