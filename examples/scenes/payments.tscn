@@ -38,27 +38,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Is Payments Supported:"
 
-[node name="IsPaymentsAvailable" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Payments Available:"
-
-[node name="IsGetCatalogSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
+[node name="IsGetCatalogSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Is Get Catalog Supported:"
 
-[node name="IsGetPurchasesSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="3"]
+[node name="IsGetPurchasesSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Is Get Purchases Supported:"
 
-[node name="IsConsumePurchaseSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="IsConsumePurchaseSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Is Consume Purchase Supported:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="5"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
