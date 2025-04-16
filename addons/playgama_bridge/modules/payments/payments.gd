@@ -1,19 +1,7 @@
 var is_supported : get = _is_supported_getter
-var is_get_catalog_supported : get = _is_get_catalog_supported_getter
-var is_get_purchases_supported : get = _is_get_purchases_supported_getter
-var is_consume_purchase_supported : get = _is_consume_purchase_supported_getter
 
 func _is_supported_getter():
 	return _js_payments.isSupported
-
-func _is_get_catalog_supported_getter():
-	return _js_payments.isGetCatalogSupported
-
-func _is_get_purchases_supported_getter():
-	return _js_payments.isGetPurchasesSupported
-	
-func _is_consume_purchase_supported_getter():
-	return _js_payments.isConsumePurchaseSupported
 
 
 var _js_payments = null
@@ -32,29 +20,19 @@ var _js_get_purchases_catch = JavaScriptBridge.create_callback(self._on_js_get_p
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
-func purchase(options = null, callback = null):
+func purchase(id, callback = null):
 	if _purchase_callback != null:
 		return
 	
 	_purchase_callback = callback
-	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-	
-	_js_payments.purchase(js_options).then(_js_purchase_then).catch(_js_purchase_catch)
+	_js_payments.purchase(id).then(_js_purchase_then).catch(_js_purchase_catch)
 
-func consume_purchase(options = null, callback = null):
+func consume_purchase(id, callback = null):
 	if _consume_purchase_callback != null:
 		return
 
 	_consume_purchase_callback = callback
-	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-	
-	_js_payments.consumePurchase(js_options).then(_js_consume_purchase_then).catch(_js_consume_purchase_catch)
+	_js_payments.consumePurchase(id).then(_js_consume_purchase_then).catch(_js_consume_purchase_catch)
 
 func get_catalog(callback = null):
 	if _get_catalog_callback != null:
