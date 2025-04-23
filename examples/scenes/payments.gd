@@ -13,13 +13,15 @@ func _on_purchase_button_pressed():
 	
 func _on_purchase_completed(success, purchase):
 	print(success)
+	print(purchase)
 
 
 func _on_consume_button_pressed():
 	Bridge.payments.consume_purchase("test_product", Callable(self, "_on_consume_completed"))
 	
-func _on_consume_completed(success):
+func _on_consume_completed(success, purchase):
 	print(success)
+	print(purchase)
 
 
 func _on_get_catalog_button_pressed():
@@ -29,7 +31,7 @@ func _on_get_catalog_completed(success, catalog):
 	print(success)
 
 	for item in catalog:
-		print("Common ID: " + str(item.commonId))
+		print("ID: " + str(item.id))
 		print("Price: " + str(item.price))
 		print("Price Currency Code: " + str(item.priceCurrencyCode))
 		print("Price Value: " + str(item.priceValue))
@@ -42,4 +44,4 @@ func _on_get_purchases_completed(success, purchases):
 	print(success)
 
 	for purchase in purchases:
-		print("Common Id: " + str(purchase.commonId))
+		print("ID: " + str(purchase.id))

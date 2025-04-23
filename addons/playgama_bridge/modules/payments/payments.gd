@@ -71,7 +71,14 @@ func _on_js_purchase_catch(args):
 
 func _on_js_consume_purchase_then(args):
 	if _consume_purchase_callback != null:
-		_consume_purchase_callback.call(true)
+		var data = args[0]
+		var data_type = typeof(data)
+		match data_type:
+			TYPE_OBJECT:
+				var details = _utils.convert_to_gd_object(data)
+				_consume_purchase_callback.call(true, details)
+			_:
+				_consume_purchase_callback.call(false, null)
 		_consume_purchase_callback = null
 
 func _on_js_consume_purchase_catch(args):
