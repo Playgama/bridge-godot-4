@@ -27,6 +27,11 @@ const StorageType = {
 	PLATFORM_INTERNAL = "platform_internal"
 }
 
+const BannerPosition = {
+	TOP = "top",
+	BOTTOM = "bottom"
+}
+
 const BannerState = {
 	LOADING = "loading",
 	SHOWN = "shown",

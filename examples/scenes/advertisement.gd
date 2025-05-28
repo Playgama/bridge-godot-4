@@ -5,8 +5,8 @@ extends DetailedSceneBase
 @onready var minimum_delay_label = $MarginContainer2/HBoxContainer/VBoxContainer/MinimumDelay
 @onready var interstitial_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/InterstitialState
 @onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedState
+@onready var rewarded_placement_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedPlacement
 @onready var adblock_detected_label = $MarginContainer2/HBoxContainer/VBoxContainer2/AdBlockDetected
-
 
 var last_banner_states = []
 var last_interstitial_states = []
@@ -27,25 +27,7 @@ func _ready():
 
 
 func _on_show_banner_button_pressed():
-	var options
-	
-	match Bridge.platform.id:
-		"vk":
-			options = {
-				"position": "bottom",
-				"layoutType": "resize",
-				"canClose": false,
-			}
-		"crazy_games":
-			options = {
-				"position": "top"
-			}
-		"game_distribution":
-			options = {
-				"position": "right"
-			}
-	
-	Bridge.advertisement.show_banner(options)
+	Bridge.advertisement.show_banner(Bridge.BannerPosition.BOTTOM)
 
 func _on_hide_banner_button_pressed():
 	Bridge.advertisement.hide_banner()
@@ -91,6 +73,7 @@ func _on_rewarded_state_changed(state):
 	if last_rewarded_states.size() > 5:
 		last_rewarded_states.remove(0)
 	
+	_update_rewarded_placement()
 	_update_rewarded_states()
 
 func _on_check_adblock_completed(result):
@@ -120,3 +103,6 @@ func _update_rewarded_states():
 		text += state + " -> "
 	
 	rewarded_state_label.text = text
+
+func _update_rewarded_placement():
+	rewarded_placement_label.text = "Rewarded Placement: " + str(Bridge.advertisement.rewarded_placement)

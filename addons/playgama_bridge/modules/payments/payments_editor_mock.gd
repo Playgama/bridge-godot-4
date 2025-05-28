@@ -9,7 +9,7 @@ func purchase(id, callback = null):
 
 func consume_purchase(id, callback = null):
 	if callback != null:
-		callback.call(false)
+		callback.call(false, null)
 
 func get_catalog(callback = null):
 	if callback != null:
