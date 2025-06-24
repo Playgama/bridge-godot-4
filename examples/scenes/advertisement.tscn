@@ -9,6 +9,11 @@ script = ExtResource("2")
 
 [node name="MarginContainer" parent="." index="0"]
 anchors_preset = 10
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
 
 [node name="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
