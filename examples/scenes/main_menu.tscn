@@ -72,11 +72,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Social"
 
-[node name="LeaderboardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LeaderboardsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
-text = "Leaderboard"
+text = "Leaderboards"
 
 [node name="PaymentsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 50)
@@ -103,7 +103,7 @@ text = "Remote Config"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StorageButton" to="." method="_on_storage_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AdvertisementButton" to="." method="_on_advertisement_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SocialButton" to="." method="_on_social_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LeaderboardsButton" to="." method="_on_leaderboards_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PaymentsButton" to="." method="_on_payments_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AchievementsButton" to="." method="_on_achievements_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoteConfig" to="." method="_on_remote_config_button_pressed"]

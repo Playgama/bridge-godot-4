@@ -21,8 +21,8 @@ func _on_advertisement_button_pressed():
 func _on_social_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/social.tscn")
 
-func _on_leaderboard_button_pressed():
-	get_tree().change_scene_to_file("res://examples/scenes/leaderboard.tscn")
+func _on_leaderboards_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/leaderboards.tscn")
 
 func _on_payments_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/payments.tscn")

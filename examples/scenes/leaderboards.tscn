@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1b0tt7reboqe"]
+
+[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
+[ext_resource type="Script" path="res://examples/scenes/leaderboards.gd" id="2"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3"]
+
+[node name="Leaderboard" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="MarginContainer" parent="." index="0"]
+anchors_preset = 10
+
+[node name="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LeaderboardsType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Leaderboards Type:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SetScoreButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Set Score"
+
+[node name="GetEntriesButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Get Entries"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/SetScoreButton" to="." method="_on_set_score_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetEntriesButton" to="." method="_on_get_entries_button_pressed"]

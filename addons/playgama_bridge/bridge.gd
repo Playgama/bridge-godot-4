@@ -27,6 +27,12 @@ const StorageType = {
 	PLATFORM_INTERNAL = "platform_internal"
 }
 
+const LeaderboardType = {
+	NOT_AVAILABLE = "not_available",
+	IN_GAME = "in_game",
+	NATIVE = "native"
+}
+
 const BannerPosition = {
 	TOP = "top",
 	BOTTOM = "bottom"
@@ -62,7 +68,7 @@ var game : get = _game_getter
 var storage : get = _storage_getter
 var advertisement : get = _advertisement_getter
 var social : get = _social_getter
-var leaderboard : get = _leaderboard_getter
+var leaderboards : get = _leaderboards_getter
 var payments : get = _payments_getter
 var achievements : get = _achievements_getter
 var remote_config : get = _remote_config_getter
@@ -89,8 +95,8 @@ func _advertisement_getter():
 func _social_getter():
 	return _social
 
-func _leaderboard_getter():
-	return _leaderboard
+func _leaderboards_getter():
+	return _leaderboards
 
 func _payments_getter():
 	return _payments
@@ -109,7 +115,7 @@ var _game = null
 var _storage = null
 var _advertisement = null
 var _social = null
-var _leaderboard = null
+var _leaderboards = null
 var _payments = null
 var _achievements = null
 var _remote_config = null
@@ -125,7 +131,7 @@ func _ready():
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage.gd").new(js_bridge.storage)
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement.gd").new(js_bridge.advertisement)
 		_social = load("res://addons/playgama_bridge/modules/social/social.gd").new(js_bridge.social)
-		_leaderboard = load("res://addons/playgama_bridge/modules/leaderboard/leaderboard.gd").new(js_bridge.leaderboard)
+		_leaderboards = load("res://addons/playgama_bridge/modules/leaderboards/leaderboards.gd").new(js_bridge.leaderboards)
 		_payments = load("res://addons/playgama_bridge/modules/payments/payments.gd").new(js_bridge.payments)
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements.gd").new(js_bridge.achievements)
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config.gd").new(js_bridge.remoteConfig)
@@ -137,7 +143,7 @@ func _ready():
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage_editor_mock.gd").new()
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement_editor_mock.gd").new()
 		_social = load("res://addons/playgama_bridge/modules/social/social_editor_mock.gd").new()
-		_leaderboard = load("res://addons/playgama_bridge/modules/leaderboard/leaderboard_editor_mock.gd").new()
+		_leaderboards = load("res://addons/playgama_bridge/modules/leaderboards/leaderboards_editor_mock.gd").new()
 		_payments = load("res://addons/playgama_bridge/modules/payments/payments_editor_mock.gd").new()
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements_editor_mock.gd").new()
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config_editor_mock.gd").new()
