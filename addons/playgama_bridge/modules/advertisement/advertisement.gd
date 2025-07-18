@@ -5,7 +5,9 @@ signal rewarded_state_changed
 var minimum_delay_between_interstitial : get = _minimum_delay_between_interstitial_getter
 var is_banner_supported : get = _is_banner_supported_getter
 var banner_state : get = _banner_state_getter
+var is_interstitial_supported : get = _is_interstitial_supported_getter
 var interstitial_state : get = _interstitial_state_getter
+var is_rewarded_supported : get = _is_rewarded_supported_getter
 var rewarded_state : get = _rewarded_state_getter
 var rewarded_placement : get = _rewarded_placement_getter
 
@@ -15,12 +17,18 @@ func _minimum_delay_between_interstitial_getter():
 
 func _is_banner_supported_getter():
 	return _js_advertisement.isBannerSupported
-	
+
 func _banner_state_getter():
 	return _js_advertisement.bannerState
 
+func _is_interstitial_supported_getter():
+	return _js_advertisement.isInterstitialSupported
+
 func _interstitial_state_getter():
 	return _js_advertisement.interstitialState
+
+func _is_rewarded_supported_getter():
+	return _js_advertisement.isRewardedSupported
 
 func _rewarded_state_getter():
 	return _js_advertisement.rewardedState

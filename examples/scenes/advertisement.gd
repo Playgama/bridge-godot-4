@@ -2,8 +2,10 @@ extends DetailedSceneBase
 
 @onready var is_banner_supported_label = $MarginContainer2/HBoxContainer/VBoxContainer/IsBannerSupported
 @onready var banner_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/BannerState
+@onready var is_interstitial_supported_label = $MarginContainer2/HBoxContainer/VBoxContainer/IsInterstitialSupported
 @onready var minimum_delay_label = $MarginContainer2/HBoxContainer/VBoxContainer/MinimumDelay
 @onready var interstitial_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/InterstitialState
+@onready var is_rewarded_supported_label = $MarginContainer2/HBoxContainer/VBoxContainer/IsRewardedSupported
 @onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedState
 @onready var rewarded_placement_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedPlacement
 @onready var adblock_detected_label = $MarginContainer2/HBoxContainer/VBoxContainer2/AdBlockDetected
@@ -15,6 +17,8 @@ var last_rewarded_states = []
 
 func _ready():
 	is_banner_supported_label.text = "Is Banner Supported: " + str(Bridge.advertisement.is_banner_supported)
+	is_interstitial_supported_label.text = "Is Interstitial Supported: " + str(Bridge.advertisement.is_interstitial_supported)
+	is_rewarded_supported_label.text = "Is Rewarded Supported: " + str(Bridge.advertisement.is_rewarded_supported)
 	minimum_delay_label.text = "Minimum Delay Between Interstitial: " + str(Bridge.advertisement.minimum_delay_between_interstitial)
 	
 	_on_banner_state_changed(Bridge.advertisement.banner_state)

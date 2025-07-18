@@ -63,17 +63,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Hide Banner"
 
-[node name="MinimumDelay" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="3"]
+[node name="IsInterstitialSupported" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Interstitial Supported:"
+
+[node name="MinimumDelay" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Minimum Delay Between Interstitials:"
 
-[node name="InterstitialState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="4"]
+[node name="InterstitialState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Last Interstitial States:"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="5"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="6"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -83,17 +88,22 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Show Interstitial"
 
-[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="6"]
+[node name="IsRewardedSupported" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Is Rewarded Supported:"
+
+[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="8"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Last Rewarded States:"
 
-[node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="7"]
+[node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="9"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Rewarded Placement:"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="8"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="10"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
