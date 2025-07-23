@@ -1,7 +1,11 @@
+signal audio_state_changed
+signal pause_state_changed
+
 var id : get = _id_getter
 var payload : get = _payload_getter
 var language : get = _language_getter
 var tld : get = _tld_getter
+var is_audio_enabled : get = _is_audio_enabled_getter
 var is_get_all_games_supported : get = _is_get_all_games_supported_getter
 var is_get_game_by_id_supported : get = _is_get_game_by_id_supported_getter
 
@@ -16,6 +20,9 @@ func _language_getter():
 
 func _tld_getter():
 	return null
+
+func _is_audio_enabled_getter():
+	return true
 
 func _is_get_all_games_supported_getter():
 	return false

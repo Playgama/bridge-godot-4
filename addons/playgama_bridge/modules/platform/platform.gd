@@ -1,7 +1,11 @@
+signal audio_state_changed
+signal pause_state_changed
+
 var id : get = _id_getter
 var payload : get = _payload_getter
 var language : get = _language_getter
 var tld : get = _tld_getter
+var is_audio_enabled : get = _is_audio_enabled_getter
 var is_get_all_games_supported : get = _is_get_all_games_supported_getter
 var is_get_game_by_id_supported : get = _is_get_game_by_id_supported_getter
 
@@ -19,6 +23,9 @@ var _get_game_by_id_callback = null
 var _js_get_game_by_id_then = JavaScriptBridge.create_callback(self._on_get_game_by_id_then)
 var _js_get_game_by_id_catch = JavaScriptBridge.create_callback(self._on_get_game_by_id_catch)
 
+var _js_on_audio_state_changed = JavaScriptBridge.create_callback(self._on_audio_state_changed)
+var _js_on_pause_state_changed = JavaScriptBridge.create_callback(self._on_pause_state_changed)
+
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 func _id_getter():
@@ -33,6 +40,9 @@ func _language_getter():
 func _tld_getter():
 	return _js_platform.tld
 
+func _is_audio_enabled_getter():
+	return _js_platform.isAudioEnabled
+
 func _is_get_all_games_supported_getter():
 	return _js_platform.isGetAllGamesSupported
 
@@ -41,7 +51,8 @@ func _is_get_game_by_id_supported_getter():
 	
 func _init(js_platform):
 	_js_platform = js_platform
-
+	_js_platform.on('audio_state_changed', _js_on_audio_state_changed)
+	_js_platform.on('pause_state_changed', _js_on_pause_state_changed)
 
 func send_message(message):
 	_js_platform.sendMessage(message)
@@ -53,6 +64,12 @@ func get_server_time(callback):
 	_get_server_time_callback = callback
 	_js_platform.getServerTime().then(_js_get_server_time_then).catch(_js_get_server_time_catch)
 
+
+func _on_audio_state_changed(args):
+	emit_signal("audio_state_changed", args[0])
+
+func _on_pause_state_changed(args):
+	emit_signal("pause_state_changed", args[0])
 
 func _on_js_get_server_time_then(args):
 	if _get_server_time_callback != null:
