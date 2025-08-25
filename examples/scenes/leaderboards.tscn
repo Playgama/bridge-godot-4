@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1b0tt7reboqe"]
+[gd_scene load_steps=4 format=3 uid="uid://21hdlfk6uupe"]
 
 [ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
 [ext_resource type="Script" path="res://examples/scenes/leaderboards.gd" id="2"]
@@ -9,6 +9,11 @@ script = ExtResource("2")
 
 [node name="MarginContainer" parent="." index="0"]
 anchors_preset = 10
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
 
 [node name="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
@@ -49,5 +54,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Get Entries"
 
+[node name="ShowNativePopupButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Show Native Popup"
+
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/SetScoreButton" to="." method="_on_set_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetEntriesButton" to="." method="_on_get_entries_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ShowNativePopupButton" to="." method="_on_show_native_popup_button_pressed"]
