@@ -30,3 +30,11 @@ func _on_get_entries_completed(success, entries):
 		print("Score: " + str(entry.score))
 		print("Rank: " + str(entry.rank))
 		print("Photo: " + str(entry.photo))
+		
+
+func _on_show_native_popup_button_pressed():
+	var leaderboard_id = ""
+	Bridge.leaderboards.show_native_popup(leaderboard_id , Callable(self, "_on_show_native_popup_completed"))
+
+func _on_show_native_popup_completed(success):
+	print(success)
