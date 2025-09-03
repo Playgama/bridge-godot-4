@@ -3,6 +3,7 @@ var is_authorized : get = _is_authorized_getter
 var id : get = _id_getter
 var name : get = _name_getter
 var photos : get = _photos_getter
+var extra : get = _extra_getter
 
 
 func _is_authorization_supported_getter():
@@ -19,6 +20,9 @@ func _name_getter():
 
 func _photos_getter():
 	return []
+
+func _extra_getter():
+	return {}
 
 
 func authorize(options = null, callback = null):

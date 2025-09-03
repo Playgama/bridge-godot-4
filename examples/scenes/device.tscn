@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dda6klodi7dss"]
 
-[ext_resource path="res://examples/scenes/detailed_scene_base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://examples/scenes/device.gd" type="Script" id=2]
-[ext_resource path="res://examples/fonts/default_font.tres" type="FontFile" id=3]
+[ext_resource type="PackedScene" uid="uid://d2o57ln4m7ae6" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
+[ext_resource type="Script" uid="uid://m8a1ri6l0lum" path="res://examples/scenes/device.gd" id="2"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3"]
 
-[node name="Device" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Device" instance=ExtResource("1")]
+script = ExtResource("2")
 
 [node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
 anchor_right = 1.0
@@ -22,5 +22,5 @@ theme_override_constants/separation = 20
 [node name="DeviceType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
 offset_right = 920.0
 offset_bottom = 28.0
-theme_override_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource("3")
 text = "Device Type:"

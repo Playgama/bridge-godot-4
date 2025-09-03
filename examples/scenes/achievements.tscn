@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://phrhtriitmne"]
 
 [ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1_vssh6"]
-[ext_resource type="Script" path="res://examples/scenes/achievements.gd" id="2_73h23"]
+[ext_resource type="Script" uid="uid://dtbi3bbo18xao" path="res://examples/scenes/achievements.gd" id="2_73h23"]
 [ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3_hn4tt"]
 
 [node name="Achievements" instance=ExtResource("1_vssh6")]

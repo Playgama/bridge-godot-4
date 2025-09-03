@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3wbj3m5worjs"]
 
-[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
-[ext_resource type="Script" path="res://examples/scenes/payments.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://d2o57ln4m7ae6" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
+[ext_resource type="Script" uid="uid://wett7ccx1jnd" path="res://examples/scenes/payments.gd" id="2"]
 [ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3"]
 
 [node name="Payments" instance=ExtResource("1")]
