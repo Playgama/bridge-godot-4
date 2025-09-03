@@ -103,6 +103,7 @@
             if (!Engine.isWebGLAvailable()) {
                 console.error('WebGL not available');
             } else {
+                bridge.engine = 'godot-4'
                 bridge.initialize().then(() => {
                     bridge.game.setLoadingProgress(0)
                     engine.startGame({
