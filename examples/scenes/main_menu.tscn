@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dinfbhfayqfn2"]
 
-[ext_resource type="Script" path="res://examples/scenes/main_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://bmhifaoanelxa" path="res://examples/scenes/main_menu.gd" id="1"]
 [ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="2"]
 
 [node name="MainMenu" type="CanvasLayer"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://d2o57ln4m7ae6"]
 
-[ext_resource path="res://examples/fonts/default_font.tres" type="FontFile" id=1]
-[ext_resource path="res://examples/scenes/detailed_scene_base.gd" type="Script" id=2]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="1"]
+[ext_resource type="Script" uid="uid://wpcf7ehi71r3" path="res://examples/scenes/detailed_scene_base.gd" id="2"]
 
 [node name="DetailedSceneBase" type="CanvasLayer"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -20,8 +20,8 @@ offset_bottom = 50.0
 [node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer"]
 offset_right = 80.0
 offset_bottom = 50.0
-custom_minimum_size = Vector2( 80, 0 )
-theme_override_fonts/font = ExtResource( 1 )
+custom_minimum_size = Vector2(80, 0)
+theme_override_fonts/font = ExtResource("1")
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
