@@ -94,27 +94,35 @@
             <div id="status-notice"></div>
         </div>
 
-        <script type="text/javascript" src="./playgama-bridge.js"></script>
         <script src="$GODOT_URL"></script>
         <script>
-            const GODOT_CONFIG = $GODOT_CONFIG;
-            var engine = new Engine(GODOT_CONFIG);
+            const GODOT_CONFIG = $GODOT_CONFIG
+            const ENGINE = new Engine(GODOT_CONFIG)
+            const CANVAS = document.getElementById('canvas')
 
-            if (!Engine.isWebGLAvailable()) {
-                console.error('WebGL not available');
-            } else {
+            function addLocalBridge() {
+                const scriptElement = document.createElement('script')
+                scriptElement.src = './playgama-bridge.js'
+                document.body.appendChild(scriptElement)
+                scriptElement.onload = function() {
+                    initializeBridge()
+                }
+            }
+
+            function initializeBridge() {
                 bridge.engine = 'godot-4'
                 bridge.initialize().then(() => {
                     bridge.game.setLoadingProgress(0)
-                    engine.startGame({
+                    ENGINE.startGame({
                         onProgress: function (current, total) {
                             bridge.game.setLoadingProgress((current / total) * 100);
                         },
                     }).then(() => {
-                        canvas.focus()
+                        CANVAS.focus()
                     });
                 })
             }
         </script>
+        <script src="https://bridge.playgama.com/v1/stable/playgama-bridge.js" onload="initializeBridge()" onerror="addLocalBridge()"></script>
     </body>
 </html>                                                                                                                                                  
