@@ -20,12 +20,17 @@ var _js_get_purchases_catch = JavaScriptBridge.create_callback(self._on_js_get_p
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
-func purchase(id, callback = null):
+func purchase(id, options = null, callback = null):
 	if _purchase_callback != null:
 		return
 	
 	_purchase_callback = callback
-	_js_payments.purchase(id).then(_js_purchase_then).catch(_js_purchase_catch)
+	
+	var js_options = null
+	if options:
+		js_options = _utils.convert_to_js(options)
+	
+	_js_payments.purchase(id, js_options).then(_js_purchase_then).catch(_js_purchase_catch)
 
 func consume_purchase(id, callback = null):
 	if _consume_purchase_callback != null:
