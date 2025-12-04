@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_purchase_button_pressed():
-	Bridge.payments.purchase("test_product", Callable(self, "_on_purchase_completed"))
+	Bridge.payments.purchase("test_product", null, Callable(self, "_on_purchase_completed"))
 	
 func _on_purchase_completed(success, purchase):
 	print(success)
