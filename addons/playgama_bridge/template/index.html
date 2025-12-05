@@ -100,6 +100,10 @@
             const ENGINE = new Engine(GODOT_CONFIG)
             const CANVAS = document.getElementById('canvas')
 
+            let bridgeScript = null
+            let bridgeTimeout = null
+            let bridgeLoaded = false
+
             function addLocalBridge() {
                 if (bridgeLoaded) return
                 bridgeLoaded = true
