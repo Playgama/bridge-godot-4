@@ -92,7 +92,51 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Send Player Got Achievement"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="6"]
+[node name="LevelOptionsInput" type="LineEdit" parent="MarginContainer2/VBoxContainer" index="6"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+placeholder_text = "{\"level\": 1}"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="7"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SendLevelStartedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer7" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Send Level Started"
+
+[node name="SendLevelCompletedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer7" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Send Level Completed"
+
+[node name="SendLevelFailedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer7" index="2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Send Level Failed"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="8"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SendLevelPausedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer8" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Send Level Paused"
+
+[node name="SendLevelResumedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer8" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
+text = "Send Level Resumed"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="9"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -107,7 +151,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Get Server Time"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="7"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="10"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -123,7 +167,7 @@ theme_override_fonts/font = ExtResource("3")
 text = "Get All Game
 s"
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="8"]
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="11"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -150,6 +194,11 @@ text = "Get Game By Id"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SendGameplayStartedButton" to="." method="_on_send_gameplay_started_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SendGameplayStoppedButton" to="." method="_on_send_gameplay_stopped_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SendPlayerGotAchievementButton" to="." method="_on_send_player_got_achievement_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer7/SendLevelStartedButton" to="." method="_on_send_level_started_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer7/SendLevelCompletedButton" to="." method="_on_send_level_completed_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer7/SendLevelFailedButton" to="." method="_on_send_level_failed_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer8/SendLevelPausedButton" to="." method="_on_send_level_paused_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer8/SendLevelResumedButton" to="." method="_on_send_level_resumed_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer4/GetServerTimeButton" to="." method="_on_get_server_time_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer5/GetAllGamesButton" to="." method="_on_get_all_games_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer6/GetGameByIdButton" to="." method="_on_get_game_by_id_button_pressed"]

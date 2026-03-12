@@ -54,8 +54,11 @@ func _init(js_platform):
 	_js_platform.on('audio_state_changed', _js_on_audio_state_changed)
 	_js_platform.on('pause_state_changed', _js_on_pause_state_changed)
 
-func send_message(message):
-	_js_platform.sendMessage(message)
+func send_message(message, options = null):
+	var js_options = null
+	if options:
+		js_options = _utils.convert_to_js(options)
+	_js_platform.sendMessage(message, js_options)
 
 func get_server_time(callback):
 	if _get_server_time_callback != null:

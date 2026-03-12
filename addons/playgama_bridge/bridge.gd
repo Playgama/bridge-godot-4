@@ -19,7 +19,12 @@ const PlatformMessage = {
 	IN_GAME_LOADING_STOPPED = "in_game_loading_stopped",
 	GAMEPLAY_STARTED = "gameplay_started",
 	GAMEPLAY_STOPPED = "gameplay_stopped",
-	PLAYER_GOT_ACHIEVEMENT = "player_got_achievement"
+	PLAYER_GOT_ACHIEVEMENT = "player_got_achievement",
+	LEVEL_STARTED = "level_started",
+	LEVEL_COMPLETED = "level_completed",
+	LEVEL_FAILED = "level_failed",
+	LEVEL_PAUSED = "level_paused",
+	LEVEL_RESUMED = "level_resumed"
 }
 
 const StorageType = {
