@@ -30,7 +30,7 @@ func _is_get_all_games_supported_getter():
 func _is_get_game_by_id_supported_getter():
 	return false
 
-func send_message(message):
+func send_message(message, options = null):
 	pass
 
 func get_server_time(callback):
