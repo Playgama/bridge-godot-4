@@ -33,40 +33,7 @@ offset_bottom = 520.0
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="DefaultStorageType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Default Storage Type:"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="IsLocalStorageSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Local Storage Supported:"
-
-[node name="IsLocalStorageAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Local Storage Available:"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="IsPlatformInternalSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Platform Internal Supported:"
-
-[node name="IsPlatformInternalAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="1"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Platform Internal Available:"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -87,7 +54,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Is Tutorial Completed"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
