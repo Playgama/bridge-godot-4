@@ -27,11 +27,6 @@ const PlatformMessage = {
 	LEVEL_RESUMED = "level_resumed"
 }
 
-const StorageType = {
-	LOCAL_STORAGE = "local_storage",
-	PLATFORM_INTERNAL = "platform_internal"
-}
-
 const LeaderboardType = {
 	NOT_AVAILABLE = "not_available",
 	IN_GAME = "in_game",
