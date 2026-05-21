@@ -65,7 +65,6 @@ const RewardedState = {
 var platform : get = _platform_getter
 var device : get = _device_getter
 var player : get = _player_getter
-var game : get = _game_getter
 var storage : get = _storage_getter
 var advertisement : get = _advertisement_getter
 var social : get = _social_getter
@@ -83,9 +82,6 @@ func _device_getter():
 
 func _player_getter():
 	return _player
-
-func _game_getter():
-	return _game
 
 func _storage_getter():
 	return _storage
@@ -112,7 +108,6 @@ func _remote_config_getter():
 var _platform = null
 var _device = null
 var _player = null
-var _game = null
 var _storage = null
 var _advertisement = null
 var _social = null
@@ -128,7 +123,6 @@ func _ready():
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform.gd").new(js_bridge.platform)
 		_device = load("res://addons/playgama_bridge/modules/device/device.gd").new(js_bridge.device)
 		_player = load("res://addons/playgama_bridge/modules/player/player.gd").new(js_bridge.player)
-		_game = load("res://addons/playgama_bridge/modules/game/game.gd").new(js_bridge.game)
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage.gd").new(js_bridge.storage)
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement.gd").new(js_bridge.advertisement)
 		_social = load("res://addons/playgama_bridge/modules/social/social.gd").new(js_bridge.social)
@@ -140,7 +134,6 @@ func _ready():
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
 		_player = load("res://addons/playgama_bridge/modules/player/player_editor_mock.gd").new()
-		_game = load("res://addons/playgama_bridge/modules/game/game_editor_mock.gd").new()
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage_editor_mock.gd").new()
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement_editor_mock.gd").new()
 		_social = load("res://addons/playgama_bridge/modules/social/social_editor_mock.gd").new()

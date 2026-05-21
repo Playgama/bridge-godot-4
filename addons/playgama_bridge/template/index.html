@@ -142,10 +142,10 @@
                 clearTimeout(bridgeTimeout)
                 bridge.engine = 'godot-4'
                 bridge.initialize().then(() => {
-                    bridge.game.setLoadingProgress(0)
+                    bridge.setGameLoadingProgress(0)
                     ENGINE.startGame({
                         onProgress: function (current, total) {
-                            bridge.game.setLoadingProgress((current / total) * 100);
+                            bridge.setGameLoadingProgress((current / total) * 100);
                         },
                     }).then(() => {
                         CANVAS.focus()
