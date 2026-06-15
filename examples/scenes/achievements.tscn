@@ -38,17 +38,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hn4tt")
 text = "Is Achievements Supported:"
 
-[node name="IsGetListSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hn4tt")
-text = "Is Get List Supported:"
-
-[node name="IsNativePopupSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hn4tt")
-text = "Is Native Popup Supported:"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
 layout_mode = 2
 
 [node name="AchievementKeyInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
@@ -63,7 +53,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hn4tt")
 placeholder_text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -79,12 +69,5 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_hn4tt")
 text = "Get List"
 
-[node name="ShowNativePopupButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_hn4tt")
-text = "Show Native Popup"
-
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/UnlockButton" to="." method="_on_unlock_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetListButton" to="." method="_on_get_list_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ShowNativePopupButton" to="." method="_on_show_native_popup_button_pressed"]
