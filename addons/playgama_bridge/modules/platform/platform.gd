@@ -9,6 +9,7 @@ var is_audio_enabled : get = _is_audio_enabled_getter
 var is_get_all_games_supported : get = _is_get_all_games_supported_getter
 var is_get_game_by_id_supported : get = _is_get_game_by_id_supported_getter
 var is_external_calls_supported : get = _is_external_calls_supported_getter
+var is_external_links_allowed : get = _is_external_links_allowed_getter
 
 
 var _js_platform = null
@@ -52,6 +53,9 @@ func _is_get_game_by_id_supported_getter():
 
 func _is_external_calls_supported_getter():
 	return _js_platform.isExternalCallsSupported
+
+func _is_external_links_allowed_getter():
+	return _js_platform.isExternalLinksAllowed
 
 func _init(js_platform):
 	_js_platform = js_platform
