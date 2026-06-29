@@ -102,6 +102,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Cross Promo"
 
+[node name="TasksButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Tasks"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
@@ -114,3 +120,4 @@ text = "Cross Promo"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AchievementsButton" to="." method="_on_achievements_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoteConfig" to="." method="_on_remote_config_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CrossPromoButton" to="." method="_on_cross_promo_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/TasksButton" to="." method="_on_tasks_button_pressed"]

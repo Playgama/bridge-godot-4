@@ -35,3 +35,6 @@ func _on_remote_config_button_pressed():
 
 func _on_cross_promo_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/cross_promo.tscn")
+
+func _on_tasks_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/tasks.tscn")

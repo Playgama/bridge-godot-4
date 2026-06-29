@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://j7p446ac7g4jl"]
+
+[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1_tasks0"]
+[ext_resource type="Script" uid="uid://c5iybqo9e9hcu" path="res://examples/scenes/tasks.gd" id="2_tasks0"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3_tasks0"]
+
+[node name="Tasks" instance=ExtResource("1_tasks0")]
+script = ExtResource("2_tasks0")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Output" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+text = "Tasks"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MetricInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+placeholder_text = "metric e.g. enemy_killed"
+
+[node name="AmountInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+placeholder_text = "amount"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TaskIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]
+custom_minimum_size = Vector2(260, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+placeholder_text = "task id e.g. daily_kills"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GetTasksButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+text = "Get Tasks"
+
+[node name="AddProgressButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+text = "Add Progress"
+
+[node name="ClaimRewardButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tasks0")
+text = "Claim Reward"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetTasksButton" to="." method="_on_get_tasks_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/AddProgressButton" to="." method="_on_add_progress_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ClaimRewardButton" to="." method="_on_claim_reward_button_pressed"]
