@@ -15,12 +15,12 @@ func _is_visible_getter():
 func _init(js_cross_promo):
 	_js_cross_promo = js_cross_promo
 
-func get_games_list(callback):
+func get_games(callback):
 	if _get_games_list_callback != null:
 		return
 
 	_get_games_list_callback = callback
-	_js_cross_promo.getGamesList().then(_js_get_games_list_then).catch(_js_get_games_list_catch)
+	_js_cross_promo.getGames().then(_js_get_games_list_then).catch(_js_get_games_list_catch)
 
 func show():
 	_js_cross_promo.show()

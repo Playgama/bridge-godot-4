@@ -16,7 +16,7 @@ func _on_hide_button_pressed():
 	_update_is_visible_label()
 
 func _on_get_games_list_button_pressed():
-	Bridge.cross_promo.get_games_list(Callable(self, "_on_get_games_list_completed"))
+	Bridge.cross_promo.get_games(Callable(self, "_on_get_games_list_completed"))
 
 func _on_get_games_list_completed(success, games):
 	print(success)

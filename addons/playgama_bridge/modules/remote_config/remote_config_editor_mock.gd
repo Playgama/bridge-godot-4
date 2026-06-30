@@ -5,7 +5,7 @@ func _is_supported_getter():
 	return false
 
 
-func set_dynamic_parameters(parameters):
+func set_context(parameters):
 	pass
 
 

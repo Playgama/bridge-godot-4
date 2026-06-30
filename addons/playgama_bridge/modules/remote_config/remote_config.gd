@@ -12,12 +12,12 @@ var _js_get_catch = JavaScriptBridge.create_callback(self._on_js_get_catch)
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
-func set_dynamic_parameters(parameters):
+func set_context(parameters):
 	if parameters == null:
 		return
 
 	var js_parameters = _utils.convert_to_js(parameters)
-	_js_remote_config.setDynamicParameters(js_parameters)
+	_js_remote_config.setContext(js_parameters)
 
 
 func get(callback = null):

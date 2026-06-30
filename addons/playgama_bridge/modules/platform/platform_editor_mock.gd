@@ -7,6 +7,7 @@ var language : get = _language_getter
 var tld : get = _tld_getter
 var is_audio_enabled : get = _is_audio_enabled_getter
 var is_external_calls_supported : get = _is_external_calls_supported_getter
+var is_external_links_allowed : get = _is_external_links_allowed_getter
 
 func _id_getter():
 	return "mock"
@@ -24,6 +25,9 @@ func _is_audio_enabled_getter():
 	return true
 
 func _is_external_calls_supported_getter():
+	return true
+
+func _is_external_links_allowed_getter():
 	return true
 
 func send_message(message, options = null):

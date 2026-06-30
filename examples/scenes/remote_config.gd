@@ -11,7 +11,7 @@ func _ready():
 func _on_get_button_pressed():
 	match Bridge.platform.id:
 		"yandex":
-			Bridge.remote_config.set_dynamic_parameters({
+			Bridge.remote_config.set_context({
 				"player_coins": "42",
 				"player_level": "dungeon_123",
 			})
