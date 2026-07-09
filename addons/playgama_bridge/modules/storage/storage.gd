@@ -17,10 +17,10 @@ var _js_delete_catch = JavaScriptBridge.create_callback(self._on_js_delete_catch
 
 func get(key, callback = null):
 	if _is_getting:
-		return
+		return null
 
 	if callback == null:
-		return
+		return null
 
 	var js_key
 	var key_type = typeof(key)
@@ -32,12 +32,13 @@ func get(key, callback = null):
 			for k in key:
 				js_key.push(k)
 		_:
-			return
+			return null
 
 	_is_getting = true
 	_get_callback = callback
 
 	_js_storage.get(js_key, false).then(_js_get_then).catch(_js_get_catch)
+	return null
 
 func set(key, value, callback = null):
 	if _is_setting:
