@@ -29,11 +29,11 @@ func is_available(storage_type):
 
 func get(key, callback = null, storage_type = null):
 	if _is_getting:
-		return
-	
+		return null
+
 	if callback == null:
-		return
-	
+		return null
+
 	var js_key
 	var key_type = typeof(key)
 	match key_type:
@@ -44,12 +44,13 @@ func get(key, callback = null, storage_type = null):
 			for k in key:
 				js_key.push(k)
 		_:
-			return
-	
+			return null
+
 	_is_getting = true
 	_get_callback = callback
-	
+
 	_js_storage.get(js_key, storage_type, false).then(_js_get_then).catch(_js_get_catch)
+	return null
 
 func set(key, value, callback = null, storage_type = null):
 	if _is_setting:
