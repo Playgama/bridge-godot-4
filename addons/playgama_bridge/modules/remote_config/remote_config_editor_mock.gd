@@ -7,6 +7,7 @@ func _is_supported_getter():
 
 func get(options = null, callback = null):
 	if callback == null:
-		return
-	
+		return null
+
 	callback.call(false, null)
+	return null
