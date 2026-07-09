@@ -3,7 +3,7 @@ const _FILE_EXTENSION = ".save"
 
 func get(key, callback = null):
 	if callback == null:
-		return
+		return null
 
 	var key_type = typeof(key)
 	var success = false
@@ -11,19 +11,20 @@ func get(key, callback = null):
 
 	match key_type:
 		TYPE_STRING:
-			data = _get(key)
+			data = _read_file(key)
 			success = true
 
 		TYPE_ARRAY:
 			data = []
 			for k in key:
-				data.append(_get(k))
+				data.append(_read_file(k))
 			success = true
 
 		_:
 			success = false
 
 	callback.call(success, data)
+	return null
 
 func set(key, value, callback = null):
 	var key_type = typeof(key)
@@ -31,11 +32,11 @@ func set(key, value, callback = null):
 
 	match key_type:
 		TYPE_STRING:
-			_set(key, value)
+			_write_file(key, value)
 			success = true
 		TYPE_ARRAY:
 			for i in key.size():
-				_set(key[i], value[i])
+				_write_file(key[i], value[i])
 			success = true
 		_:
 			success = false
@@ -49,11 +50,11 @@ func delete(key, callback = null):
 
 	match key_type:
 		TYPE_STRING:
-			_delete(key)
+			_delete_file(key)
 			success = true
 		TYPE_ARRAY:
 			for k in key:
-				_delete(k)
+				_delete_file(k)
 			success = true
 		_:
 			success = false
@@ -65,7 +66,7 @@ func delete(key, callback = null):
 func _get_file_path(key):
 	return "user://" + key + _FILE_EXTENSION
 
-func _get(key):
+func _read_file(key):
 	var path = _get_file_path(key)
 
 	if not FileAccess.file_exists(path):
@@ -80,7 +81,7 @@ func _get(key):
 	else:
 		return data
 
-func _set(key, value):
+func _write_file(key, value):
 	var path = _get_file_path(key)
 	var file = FileAccess.open(path, FileAccess.WRITE)
 
@@ -90,7 +91,7 @@ func _set(key, value):
 	file.store_string(value)
 	file = null
 
-func _delete(key):
+func _delete_file(key):
 	var path = _get_file_path(key)
 
 	if not FileAccess.file_exists(path):

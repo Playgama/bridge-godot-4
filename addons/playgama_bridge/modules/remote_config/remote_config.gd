@@ -22,15 +22,16 @@ func set_context(parameters):
 
 func get(callback = null):
 	if _is_getting:
-		return
+		return null
 
 	if callback == null:
-		return
+		return null
 
 	_is_getting = true
 	_get_callback = callback
 
 	_js_remote_config.get().then(_js_get_then).catch(_js_get_catch)
+	return null
 
 
 func _init(js_remote_config):

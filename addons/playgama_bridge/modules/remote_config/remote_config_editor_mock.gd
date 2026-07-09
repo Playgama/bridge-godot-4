@@ -11,6 +11,7 @@ func set_context(parameters):
 
 func get(callback = null):
 	if callback == null:
-		return
+		return null
 
 	callback.call(false, null)
+	return null
