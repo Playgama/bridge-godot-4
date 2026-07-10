@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7qghxlqkr50l"]
+
+[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1_daily0"]
+[ext_resource type="Script" uid="uid://336z82f7nt4s7" path="res://examples/scenes/daily_rewards.gd" id="2_daily0"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3_daily0"]
+
+[node name="DailyRewards" instance=ExtResource("1_daily0")]
+script = ExtResource("2_daily0")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Output" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_daily0")
+text = "Daily Rewards"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GetRewardsButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_daily0")
+text = "Get Rewards"
+
+[node name="GetCurrentDayButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_daily0")
+text = "Get Current Day"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GetCurrentRewardButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_daily0")
+text = "Get Current Reward"
+
+[node name="ClaimCurrentRewardButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_daily0")
+text = "Claim Current Reward"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetRewardsButton" to="." method="_on_get_rewards_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetCurrentDayButton" to="." method="_on_get_current_day_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/GetCurrentRewardButton" to="." method="_on_get_current_reward_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/ClaimCurrentRewardButton" to="." method="_on_claim_current_reward_button_pressed"]

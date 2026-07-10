@@ -151,43 +151,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Get Server Time"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="10"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="IsGetAllGamesSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer5" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Get All Games Supported:"
-
-[node name="GetAllGamesButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer5" index="1"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Get All Game
-s"
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="11"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="IsGetGameByIdSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="0"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Is Get Game By Id Supported:"
-
-[node name="GameIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="1"]
-custom_minimum_size = Vector2(130, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-placeholder_text = "Game Id"
-
-[node name="GetGameByIdButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="2"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Get Game By Id"
-
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendGameReadyButton" to="." method="_on_send_game_ready_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendInGameLoadingStartedButton" to="." method="_on_send_in_game_loading_started_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendInGameLoadingStoppedButton" to="." method="_on_send_in_game_loading_stopped_button_pressed"]
@@ -200,5 +163,3 @@ text = "Get Game By Id"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer8/SendLevelPausedButton" to="." method="_on_send_level_paused_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer8/SendLevelResumedButton" to="." method="_on_send_level_resumed_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer4/GetServerTimeButton" to="." method="_on_get_server_time_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer5/GetAllGamesButton" to="." method="_on_get_all_games_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer6/GetGameByIdButton" to="." method="_on_get_game_by_id_button_pressed"]

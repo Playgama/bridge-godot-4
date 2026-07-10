@@ -9,9 +9,6 @@ func _on_device_button_pressed():
 func _on_player_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/player.tscn")
 
-func _on_game_button_pressed():
-	get_tree().change_scene_to_file("res://examples/scenes/game.tscn")
-
 func _on_storage_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/storage.tscn")
 
@@ -32,3 +29,12 @@ func _on_achievements_button_pressed():
 
 func _on_remote_config_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/remote_config.tscn")
+
+func _on_cross_promo_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/cross_promo.tscn")
+
+func _on_tasks_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/tasks.tscn")
+
+func _on_daily_rewards_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/daily_rewards.tscn")

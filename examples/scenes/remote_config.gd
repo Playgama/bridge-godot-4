@@ -9,18 +9,14 @@ func _ready():
 
 
 func _on_get_button_pressed():
-	var options
-	
 	match Bridge.platform.id:
 		"yandex":
-			options = {
-				"clientFeatures": [
-					{ "name": "player_coins", "value": "42" },
-					{ "name": "player_level", "value": "dungeon_123" },
-				]
-			}
+			Bridge.remote_config.set_context({
+				"player_coins": "42",
+				"player_level": "dungeon_123",
+			})
 
-	Bridge.remote_config.get(options, Callable(self, "_on_remote_config_get_completed"))
+	Bridge.remote_config.get(Callable(self, "_on_remote_config_get_completed"))
 
 func _on_remote_config_get_completed(success, data):
 	print(success)

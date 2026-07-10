@@ -8,11 +8,6 @@ const DeviceType = {
 	TV = "tv"
 }
 
-const VisibilityState = {
-	VISIBLE = "visible",
-	HIDDEN = "hidden"
-}
-
 const PlatformMessage = {
 	GAME_READY = "game_ready",
 	IN_GAME_LOADING_STARTED = "in_game_loading_started",
@@ -25,11 +20,6 @@ const PlatformMessage = {
 	LEVEL_FAILED = "level_failed",
 	LEVEL_PAUSED = "level_paused",
 	LEVEL_RESUMED = "level_resumed"
-}
-
-const StorageType = {
-	LOCAL_STORAGE = "local_storage",
-	PLATFORM_INTERNAL = "platform_internal"
 }
 
 const LeaderboardType = {
@@ -70,7 +60,6 @@ const RewardedState = {
 var platform : get = _platform_getter
 var device : get = _device_getter
 var player : get = _player_getter
-var game : get = _game_getter
 var storage : get = _storage_getter
 var advertisement : get = _advertisement_getter
 var social : get = _social_getter
@@ -78,6 +67,9 @@ var leaderboards : get = _leaderboards_getter
 var payments : get = _payments_getter
 var achievements : get = _achievements_getter
 var remote_config : get = _remote_config_getter
+var cross_promo : get = _cross_promo_getter
+var tasks : get = _tasks_getter
+var daily_rewards : get = _daily_rewards_getter
 
 
 func _platform_getter():
@@ -88,9 +80,6 @@ func _device_getter():
 
 func _player_getter():
 	return _player
-
-func _game_getter():
-	return _game
 
 func _storage_getter():
 	return _storage
@@ -114,10 +103,18 @@ func _achievements_getter():
 func _remote_config_getter():
 	return _remote_config
 
+func _cross_promo_getter():
+	return _cross_promo
+
+func _tasks_getter():
+	return _tasks
+
+func _daily_rewards_getter():
+	return _daily_rewards
+
 var _platform = null
 var _device = null
 var _player = null
-var _game = null
 var _storage = null
 var _advertisement = null
 var _social = null
@@ -125,6 +122,9 @@ var _leaderboards = null
 var _payments = null
 var _achievements = null
 var _remote_config = null
+var _cross_promo = null
+var _tasks = null
+var _daily_rewards = null
 
 
 func _ready():
@@ -133,7 +133,6 @@ func _ready():
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform.gd").new(js_bridge.platform)
 		_device = load("res://addons/playgama_bridge/modules/device/device.gd").new(js_bridge.device)
 		_player = load("res://addons/playgama_bridge/modules/player/player.gd").new(js_bridge.player)
-		_game = load("res://addons/playgama_bridge/modules/game/game.gd").new(js_bridge.game)
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage.gd").new(js_bridge.storage)
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement.gd").new(js_bridge.advertisement)
 		_social = load("res://addons/playgama_bridge/modules/social/social.gd").new(js_bridge.social)
@@ -141,11 +140,13 @@ func _ready():
 		_payments = load("res://addons/playgama_bridge/modules/payments/payments.gd").new(js_bridge.payments)
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements.gd").new(js_bridge.achievements)
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config.gd").new(js_bridge.remoteConfig)
+		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo.gd").new(js_bridge.crossPromo)
+		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks.gd").new(js_bridge.tasks)
+		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards.gd").new(js_bridge.dailyRewards)
 	else:
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
 		_player = load("res://addons/playgama_bridge/modules/player/player_editor_mock.gd").new()
-		_game = load("res://addons/playgama_bridge/modules/game/game_editor_mock.gd").new()
 		_storage = load("res://addons/playgama_bridge/modules/storage/storage_editor_mock.gd").new()
 		_advertisement = load("res://addons/playgama_bridge/modules/advertisement/advertisement_editor_mock.gd").new()
 		_social = load("res://addons/playgama_bridge/modules/social/social_editor_mock.gd").new()
@@ -153,3 +154,6 @@ func _ready():
 		_payments = load("res://addons/playgama_bridge/modules/payments/payments_editor_mock.gd").new()
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements_editor_mock.gd").new()
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config_editor_mock.gd").new()
+		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo_editor_mock.gd").new()
+		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks_editor_mock.gd").new()
+		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards_editor_mock.gd").new()

@@ -48,12 +48,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Player"
 
-[node name="GameButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(180, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
-text = "Game"
-
 [node name="StorageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 50)
 layout_mode = 2
@@ -96,10 +90,27 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Remote Config"
 
+[node name="CrossPromoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Cross Promo"
+
+[node name="TasksButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Tasks"
+
+[node name="DailyRewardsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Daily Rewards"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StorageButton" to="." method="_on_storage_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AdvertisementButton" to="." method="_on_advertisement_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SocialButton" to="." method="_on_social_button_pressed"]
@@ -107,3 +118,6 @@ text = "Remote Config"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PaymentsButton" to="." method="_on_payments_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AchievementsButton" to="." method="_on_achievements_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoteConfig" to="." method="_on_remote_config_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CrossPromoButton" to="." method="_on_cross_promo_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/TasksButton" to="." method="_on_tasks_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DailyRewardsButton" to="." method="_on_daily_rewards_button_pressed"]

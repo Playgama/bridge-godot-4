@@ -19,59 +19,34 @@ func _ready():
 	is_add_to_favorites_supported.text = "Is Add To Favorites Supported: " + str(Bridge.social.is_add_to_favorites_supported)
 	is_add_to_home_screen_supported.text = "Is Add To Home Screen Supported: " + str(Bridge.social.is_add_to_home_screen_supported)
 	is_rate_supported.text = "Is Rate Supported: " + str(Bridge.social.is_rate_supported)
-	is_external_links_allowed.text = "Is External Links Allowed: " + str(Bridge.social.is_external_links_allowed)
+	is_external_links_allowed.text = "Is External Links Allowed: " + str(Bridge.platform.is_external_links_allowed)
 
 
 func _on_share_button_pressed():
-	var options
-	
-	match Bridge.platform.id:
-		"vk":
-			options = {
-				"link": "https://vk.com/mewton.games"
-			}
-	
-	Bridge.social.share(options)
+	# Pass canonical content fields ("text", "image", "url"); the bridge maps them to
+	# each platform (e.g. VK uses "url" as the share link, Discord as the media url).
+	# Platform-specific defaults can also be set in playgama-bridge-config.json under "social".
+	Bridge.social.share({
+		"text": "Check out this game!",
+		"url": "YOUR_GAME_URL"
+	})
 
 
 func _on_create_post_button_pressed():
-	var options
-	
-	match Bridge.platform.id:
-		"vk":
-			options = {
-				"message": "Hello world!",
-				"attachments": "photo-199747461_457239629"
-			}
-		"ok":
-			options = {
-				"media":[
-					{
-						"type": "text",
-						"text": "Here you can see odnoklassniki API docs(click the link)"
-					},
-					{
-						"type": "link",
-						"url": "https://apiok.ru"
-					},
-					{
-						"type": "poll",
-						"question": "Do you like our API?",
-						"answers": [
-							{ "text": "Yes" },
-							{ "text": "No" }
-						],
-						"options": "SingleChoice,AnonymousVoting"
-					}
-				]
-			}
-	
-	Bridge.social.create_post(options)
+	# Canonical "text"/"url"; the bridge assembles the platform-native post (e.g. OK
+	# builds its media attachment). "status" (publish to profile) can be set per-platform
+	# in playgama-bridge-config.json under "social".
+	Bridge.social.create_post({
+		"text": "I'm playing this game!",
+		"url": "YOUR_GAME_URL"
+	})
 
 
 func _on_join_community_button_pressed():
+	# "groupId" is platform-specific; it can also be declared in playgama-bridge-config.json
+	# under "social" instead of being passed at call time.
 	var options
-	
+
 	match Bridge.platform.id:
 		"vk":
 			options = {
@@ -81,20 +56,14 @@ func _on_join_community_button_pressed():
 			options = {
 				"groupId": "62984239710374"
 			}
-	
+
 	Bridge.social.join_community(options)
 
 
 func _on_invite_friends_button_pressed():
-	var options
-	
-	match Bridge.platform.id:
-		"ok":
-			options = {
-				"text": "Hello World!"
-			}
-	
-	Bridge.social.invite_friends(options)
+	Bridge.social.invite_friends({
+		"text": "Hello World!"
+	})
 
 
 func _on_add_to_favorites_button_pressed():
