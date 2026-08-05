@@ -38,3 +38,6 @@ func _on_tasks_button_pressed():
 
 func _on_daily_rewards_button_pressed():
 	get_tree().change_scene_to_file("res://examples/scenes/daily_rewards.tscn")
+
+func _on_notifications_button_pressed():
+	get_tree().change_scene_to_file("res://examples/scenes/notifications.tscn")
