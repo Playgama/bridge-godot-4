@@ -1,2 +1,5 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
+
+# Compiled SDK bundle: single-line minified build, diffs are unreadable and hang GUI clients
+addons/playgama_bridge/template/playgama-bridge.js -diff linguist-generated
