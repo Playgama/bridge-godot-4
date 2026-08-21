@@ -70,6 +70,7 @@ var remote_config : get = _remote_config_getter
 var cross_promo : get = _cross_promo_getter
 var tasks : get = _tasks_getter
 var daily_rewards : get = _daily_rewards_getter
+var notifications : get = _notifications_getter
 
 
 func _platform_getter():
@@ -112,6 +113,9 @@ func _tasks_getter():
 func _daily_rewards_getter():
 	return _daily_rewards
 
+func _notifications_getter():
+	return _notifications
+
 var _platform = null
 var _device = null
 var _player = null
@@ -125,6 +129,7 @@ var _remote_config = null
 var _cross_promo = null
 var _tasks = null
 var _daily_rewards = null
+var _notifications = null
 
 
 func _ready():
@@ -143,6 +148,7 @@ func _ready():
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo.gd").new(js_bridge.crossPromo)
 		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks.gd").new(js_bridge.tasks)
 		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards.gd").new(js_bridge.dailyRewards)
+		_notifications = load("res://addons/playgama_bridge/modules/notifications/notifications.gd").new(js_bridge.notifications)
 	else:
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
@@ -157,3 +163,4 @@ func _ready():
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo_editor_mock.gd").new()
 		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks_editor_mock.gd").new()
 		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards_editor_mock.gd").new()
+		_notifications = load("res://addons/playgama_bridge/modules/notifications/notifications_editor_mock.gd").new()

@@ -108,6 +108,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
 text = "Daily Rewards"
 
+[node name="NotificationsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+text = "Notifications"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
@@ -121,3 +127,4 @@ text = "Daily Rewards"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CrossPromoButton" to="." method="_on_cross_promo_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/TasksButton" to="." method="_on_tasks_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DailyRewardsButton" to="." method="_on_daily_rewards_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/NotificationsButton" to="." method="_on_notifications_button_pressed"]
