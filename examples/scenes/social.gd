@@ -26,6 +26,8 @@ func _on_share_button_pressed():
 	# Pass canonical content fields ("text", "image", "url"); the bridge maps them to
 	# each platform (e.g. VK uses "url" as the share link, Discord as the media url).
 	# Platform-specific defaults can also be set in playgama-bridge-config.json under "social".
+	# With an entry declared in "social.shares" of playgama-bridge-config.json, pass its id
+	# instead: Bridge.social.share("score")
 	Bridge.social.share({
 		"text": "Check out this game!",
 		"url": "YOUR_GAME_URL"
@@ -35,7 +37,8 @@ func _on_share_button_pressed():
 func _on_create_post_button_pressed():
 	# Canonical "text"/"url"; the bridge assembles the platform-native post (e.g. OK
 	# builds its media attachment). "status" (publish to profile) can be set per-platform
-	# in playgama-bridge-config.json under "social".
+	# in playgama-bridge-config.json under "social". With an entry declared in "social.posts",
+	# pass its id instead: Bridge.social.create_post("gift")
 	Bridge.social.create_post({
 		"text": "I'm playing this game!",
 		"url": "YOUR_GAME_URL"
@@ -61,6 +64,8 @@ func _on_join_community_button_pressed():
 
 
 func _on_invite_friends_button_pressed():
+	# With an entry declared in "social.invites" of playgama-bridge-config.json, pass its id
+	# instead: Bridge.social.invite_friends("friends")
 	Bridge.social.invite_friends({
 		"text": "Hello World!"
 	})

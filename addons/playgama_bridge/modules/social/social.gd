@@ -53,6 +53,9 @@ var _js_rate_catch = JavaScriptBridge.create_callback(self._on_js_rate_catch)
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
+# share, invite_friends and create_post take either the id of an entry declared in
+# playgama-bridge-config.json (social.shares, social.invites, social.posts) or a
+# Dictionary with the content.
 func share(options = null, callback = null):
 	if _share_callback != null:
 		return
