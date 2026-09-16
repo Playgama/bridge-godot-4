@@ -13,6 +13,8 @@ func _ready():
 	language_label.text = "Language: " + Bridge.platform.language
 	payload_label.text = "Payload: " + str(Bridge.platform.payload)
 	tld_label.text = "TLD: " + str(Bridge.platform.tld)
+	print("Launch source: " + str(Bridge.platform.launch_source))
+	print("Data: " + str(Bridge.platform.data))
 
 
 func _on_send_game_ready_button_pressed():

@@ -5,6 +5,8 @@ var id : get = _id_getter
 var payload : get = _payload_getter
 var language : get = _language_getter
 var tld : get = _tld_getter
+var launch_source : get = _launch_source_getter
+var data : get = _data_getter
 var is_audio_enabled : get = _is_audio_enabled_getter
 var is_external_calls_supported : get = _is_external_calls_supported_getter
 var is_external_links_allowed : get = _is_external_links_allowed_getter
@@ -20,6 +22,12 @@ func _language_getter():
 
 func _tld_getter():
 	return null
+
+func _launch_source_getter():
+	return null
+
+func _data_getter():
+	return {}
 
 func _is_audio_enabled_getter():
 	return true
