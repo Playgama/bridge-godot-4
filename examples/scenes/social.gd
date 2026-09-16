@@ -21,6 +21,18 @@ func _ready():
 	is_rate_supported.text = "Is Rate Supported: " + str(Bridge.social.is_rate_supported)
 	is_external_links_allowed.text = "Is External Links Allowed: " + str(Bridge.platform.is_external_links_allowed)
 
+	# Grant whatever the posts brought: the reward of the post the game was opened
+	# from and what the player's own posts earned since the previous check.
+	if Bridge.social.is_post_reward_supported:
+		Bridge.social.get_post_reward(Callable(self, "_on_get_post_reward_completed"))
+
+
+func _on_get_post_reward_completed(success, rewards):
+	print(success)
+
+	for reward in rewards:
+		print(reward.type + ": " + str(reward.amount) + " " + reward.id)
+
 
 func _on_share_button_pressed():
 	# Pass canonical content fields ("text", "image", "url"); the bridge maps them to
@@ -38,7 +50,9 @@ func _on_create_post_button_pressed():
 	# Canonical "text"/"url"; the bridge assembles the platform-native post (e.g. OK
 	# builds its media attachment). "status" (publish to profile) can be set per-platform
 	# in playgama-bridge-config.json under "social". With an entry declared in "social.posts",
-	# pass its id instead: Bridge.social.create_post("gift")
+	# pass its id instead: Bridge.social.create_post("gift"). A second string travels with
+	# the post and comes back as Bridge.platform.payload when someone opens it:
+	# Bridge.social.create_post("level", level_json)
 	Bridge.social.create_post({
 		"text": "I'm playing this game!",
 		"url": "YOUR_GAME_URL"
