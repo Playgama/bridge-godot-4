@@ -3,3 +3,9 @@
 
 # Compiled SDK bundle: single-line minified build, diffs are unreadable and hang GUI clients
 addons/playgama_bridge/template/playgama-bridge.js -diff linguist-generated
+
+# Asset Library downloads: ship only the addons folder
+/**                export-ignore
+/addons            !export-ignore
+/addons/**         !export-ignore
+/addons/*.zip      export-ignore
