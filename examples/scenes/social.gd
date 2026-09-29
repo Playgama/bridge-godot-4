@@ -35,54 +35,26 @@ func _on_get_post_reward_completed(success, rewards):
 
 
 func _on_share_button_pressed():
-	# Pass canonical content fields ("text", "image", "url"); the bridge maps them to
-	# each platform (e.g. VK uses "url" as the share link, Discord as the media url).
-	# Platform-specific defaults can also be set in playgama-bridge-config.json under "social".
-	# With an entry declared in "social.shares" of playgama-bridge-config.json, pass its id
-	# instead: Bridge.social.share("score")
-	Bridge.social.share({
-		"text": "Check out this game!",
-		"url": "YOUR_GAME_URL"
-	})
+	# "score" is the id of an entry declared in "social.shares" of playgama-bridge-config.json
+	Bridge.social.share("score")
 
 
 func _on_create_post_button_pressed():
-	# Canonical "text"/"url"; the bridge assembles the platform-native post (e.g. OK
-	# builds its media attachment). "status" (publish to profile) can be set per-platform
-	# in playgama-bridge-config.json under "social". With an entry declared in "social.posts",
-	# pass its id instead: Bridge.social.create_post("gift"). A second string travels with
-	# the post and comes back as Bridge.platform.payload when someone opens it:
-	# Bridge.social.create_post("level", level_json)
-	Bridge.social.create_post({
-		"text": "I'm playing this game!",
-		"url": "YOUR_GAME_URL"
-	})
+	# "gift" is the id of an entry declared in "social.posts" of playgama-bridge-config.json.
+	# A second string travels with the post and comes back as Bridge.platform.payload
+	# when someone opens it: Bridge.social.create_post("level", level_json)
+	Bridge.social.create_post("gift")
 
 
 func _on_join_community_button_pressed():
-	# "groupId" is platform-specific; it can also be declared in playgama-bridge-config.json
-	# under "social" instead of being passed at call time.
-	var options
-
-	match Bridge.platform.id:
-		"vk":
-			options = {
-				"groupId": "199747461"
-			}
-		"ok":
-			options = {
-				"groupId": "62984239710374"
-			}
-
-	Bridge.social.join_community(options)
+	# The community ("groupId" and so on) is declared in "social.joinCommunity"
+	# of playgama-bridge-config.json
+	Bridge.social.join_community()
 
 
 func _on_invite_friends_button_pressed():
-	# With an entry declared in "social.invites" of playgama-bridge-config.json, pass its id
-	# instead: Bridge.social.invite_friends("friends")
-	Bridge.social.invite_friends({
-		"text": "Hello World!"
-	})
+	# "friends" is the id of an entry declared in "social.invites" of playgama-bridge-config.json
+	Bridge.social.invite_friends("friends")
 
 
 func _on_add_to_favorites_button_pressed():

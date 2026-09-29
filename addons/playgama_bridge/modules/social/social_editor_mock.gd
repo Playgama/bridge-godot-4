@@ -33,19 +33,19 @@ func _is_post_reward_supported_getter():
 	return false
 
 
-func share(options = null, callback = null):
+func share(id = null, callback = null):
 	if callback != null:
 		callback.call(false)
 
-func join_community(options = null, callback = null):
+func join_community(callback = null):
 	if callback != null:
 		callback.call(false)
 
-func invite_friends(options = null, callback = null):
+func invite_friends(id = null, callback = null):
 	if callback != null:
 		callback.call(false)
 
-func create_post(options = null, payload = null, callback = null):
+func create_post(id = null, payload = null, callback = null):
 	if payload != null and typeof(payload) != TYPE_STRING:
 		callback = payload
 	if callback != null:

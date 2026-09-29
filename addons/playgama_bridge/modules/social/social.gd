@@ -60,49 +60,37 @@ var _js_get_post_reward_catch = JavaScriptBridge.create_callback(self._on_js_get
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
-# share, invite_friends and create_post take either the id of an entry declared in
-# playgama-bridge-config.json (social.shares, social.invites, social.posts) or a
-# Dictionary with the content.
-func share(options = null, callback = null):
+# share, invite_friends and create_post take the id of an entry declared in
+# playgama-bridge-config.json (social.shares, social.invites, social.posts).
+# join_community reads its data from social.joinCommunity of the config.
+func share(id = null, callback = null):
 	if _share_callback != null:
 		return
 	
 	_share_callback = callback
 	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-	
-	_js_social.share(js_options).then(_js_share_then).catch(_js_share_catch)
+	_js_social.share(id).then(_js_share_then).catch(_js_share_catch)
 
-func join_community(options = null, callback = null):
+func join_community(callback = null):
 	if _join_community_callback != null:
 		return
 	
 	_join_community_callback = callback
 	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-	
-	_js_social.joinCommunity(js_options).then(_js_join_community_then).catch(_js_join_community_catch)
+	_js_social.joinCommunity().then(_js_join_community_then).catch(_js_join_community_catch)
 
-func invite_friends(options = null, callback = null):
+func invite_friends(id = null, callback = null):
 	if _invite_friends_callback != null:
 		return
 
 	_invite_friends_callback = callback
 	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-		
-	_js_social.inviteFriends(js_options).then(_js_invite_friends_then).catch(_js_invite_friends_catch)
+	_js_social.inviteFriends(id).then(_js_invite_friends_then).catch(_js_invite_friends_catch)
 
 # `payload` is the game's own string for this one post — a level, a seed, a
 # challenge — handed back as Bridge.platform.payload when someone opens it.
-# create_post(options, callback) from before the payload argument still works.
-func create_post(options = null, payload = null, callback = null):
+# create_post(id, callback) without the payload works too.
+func create_post(id = null, payload = null, callback = null):
 	if payload != null and typeof(payload) != TYPE_STRING:
 		callback = payload
 		payload = null
@@ -112,11 +100,7 @@ func create_post(options = null, payload = null, callback = null):
 	
 	_create_post_callback = callback
 	
-	var js_options = null
-	if options:
-		js_options = _utils.convert_to_js(options)
-	
-	var promise = _js_social.createPost(js_options, payload) if payload != null else _js_social.createPost(js_options)
+	var promise = _js_social.createPost(id, payload) if payload != null else _js_social.createPost(id)
 	promise.then(_js_create_post_then).catch(_js_create_post_catch)
 
 func add_to_favorites(callback = null):
