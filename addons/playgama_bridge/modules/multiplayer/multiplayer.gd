@@ -191,6 +191,7 @@ func set_room_properties(properties):
 func set_player_properties(properties):
 	_js_multiplayer.setPlayerProperties(_utils.convert_to_js(properties))
 
+# data: a flat Dictionary (string, number or bool values).
 # options.to: one of Bridge.MultiplayerTarget, a player id or an array of player ids.
 func send(type, data = null, options = null):
 	var js_data = _gd_to_js(data)
@@ -240,9 +241,12 @@ func _on_host_changed(args):
 	_is_cache_outdated = true
 	emit_signal("host_changed", _js_to_gd(args[0]))
 
-# The message is a dictionary: { type, data, from }.
+# The message is a dictionary: { type, data, from }, data is always a Dictionary.
 func _on_message_received(args):
-	emit_signal("message_received", _js_to_gd(args[0]))
+	var message = _js_to_gd(args[0])
+	if typeof(message.get("data")) != TYPE_DICTIONARY:
+		message["data"] = {}
+	emit_signal("message_received", message)
 
 func _on_js_create_room_then(args):
 	if _create_room_callback != null:
