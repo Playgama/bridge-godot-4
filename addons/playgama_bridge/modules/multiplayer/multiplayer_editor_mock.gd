@@ -6,6 +6,7 @@ signal player_left
 signal player_updated
 signal host_changed
 signal message_received
+signal sync_state_received
 
 var is_supported : get = _is_supported_getter
 var state : get = _state_getter
@@ -18,6 +19,7 @@ var room : get = _room_getter
 var players : get = _players_getter
 var is_invite_supported : get = _is_invite_supported_getter
 var launch_room_id : get = _launch_room_id_getter
+var sync_state : get = _sync_state_getter
 var last_error : get = _last_error_getter
 
 
@@ -54,8 +56,14 @@ func _is_invite_supported_getter():
 func _launch_room_id_getter():
 	return null
 
+func _sync_state_getter():
+	return _sync_state.duplicate(true)
+
 func _last_error_getter():
 	return null
+
+# The world is only stored, nothing is sent.
+var _sync_state = {}
 
 
 func create_room(options = null, callback = null):
@@ -95,3 +103,7 @@ func set_player_properties(properties):
 
 func send(type, data = null, options = null):
 	pass
+
+func set_sync_state(state):
+	if typeof(state) == TYPE_DICTIONARY:
+		_sync_state = state.duplicate(true)

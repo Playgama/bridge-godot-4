@@ -6,6 +6,7 @@ signal player_left
 signal player_updated
 signal host_changed
 signal message_received
+signal sync_state_received
 
 var is_supported : get = _is_supported_getter
 var state : get = _state_getter
@@ -18,6 +19,7 @@ var room : get = _room_getter
 var players : get = _players_getter
 var is_invite_supported : get = _is_invite_supported_getter
 var launch_room_id : get = _launch_room_id_getter
+var sync_state : get = _sync_state_getter
 # Error code of the last failed request, e.g. MULTIPLAYER_ROOM_FULL; null after a success.
 var last_error : get = _last_error_getter
 
@@ -58,6 +60,13 @@ func _is_invite_supported_getter():
 func _launch_room_id_getter():
 	return _js_multiplayer.launchRoomId
 
+# The last world set with set_sync_state() or received, {} after the room is left.
+func _sync_state_getter():
+	if _is_sync_state_outdated:
+		_sync_state = _js_to_gd(_js_multiplayer.syncState)
+		_is_sync_state_outdated = false
+	return _sync_state.duplicate(true)
+
 func _last_error_getter():
 	return _last_error
 
@@ -67,6 +76,9 @@ var _js_json = JavaScriptBridge.get_interface("JSON")
 var _room = null
 var _players = []
 var _is_cache_outdated = true
+# the world is read from JS again only after it is set, received or reset
+var _sync_state = {}
+var _is_sync_state_outdated = true
 var _last_error = null
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 var _js_on_state_changed = JavaScriptBridge.create_callback(self._on_state_changed)
@@ -77,6 +89,7 @@ var _js_on_player_left = JavaScriptBridge.create_callback(self._on_player_left)
 var _js_on_player_updated = JavaScriptBridge.create_callback(self._on_player_updated)
 var _js_on_host_changed = JavaScriptBridge.create_callback(self._on_host_changed)
 var _js_on_message_received = JavaScriptBridge.create_callback(self._on_message_received)
+var _js_on_sync_state_received = JavaScriptBridge.create_callback(self._on_sync_state_received)
 var _create_room_callback = null
 var _js_create_room_then = JavaScriptBridge.create_callback(self._on_js_create_room_then)
 var _js_create_room_catch = JavaScriptBridge.create_callback(self._on_js_create_room_catch)
@@ -200,6 +213,12 @@ func send(type, data = null, options = null):
 	else:
 		_js_multiplayer.send(type, js_data)
 
+# state: a Dictionary, converted like message data. Only the host's world is sent to the
+# other players; works outside a room too, e.g. to set the starting world before create_room().
+func set_sync_state(state):
+	_is_sync_state_outdated = true
+	_js_multiplayer.setSyncState(_gd_to_js(state))
+
 
 func _init(js_multiplayer):
 	_js_multiplayer = js_multiplayer
@@ -211,13 +230,16 @@ func _init(js_multiplayer):
 	_js_multiplayer.on('multiplayer_player_updated', _js_on_player_updated)
 	_js_multiplayer.on('multiplayer_host_changed', _js_on_host_changed)
 	_js_multiplayer.on('multiplayer_message_received', _js_on_message_received)
+	_js_multiplayer.on('multiplayer_sync_state_received', _js_on_sync_state_received)
 
 func _on_state_changed(args):
 	_is_cache_outdated = true
+	_is_sync_state_outdated = true
 	emit_signal("state_changed", args[0])
 
 func _on_room_left(args):
 	_is_cache_outdated = true
+	_is_sync_state_outdated = true
 	emit_signal("room_left", args[0])
 
 func _on_room_updated(args):
@@ -247,6 +269,11 @@ func _on_message_received(args):
 	if typeof(message.get("data")) != TYPE_DICTIONARY:
 		message["data"] = {}
 	emit_signal("message_received", message)
+
+# The world (a Dictionary) from the host, or the kept one when this player becomes the host.
+func _on_sync_state_received(args):
+	_is_sync_state_outdated = true
+	emit_signal("sync_state_received", _js_to_gd(args[0]))
 
 func _on_js_create_room_then(args):
 	if _create_room_callback != null:
@@ -318,8 +345,8 @@ func _get_error_code(error):
 
 	return null
 
-# JS objects (room, players, message data) are free JSON: one stringify call and the native
-# parser are much cheaper than reading every field through JavaScriptBridge.
+# JS objects (room, players, message data, world) are free JSON: one stringify call and the
+# native parser are much cheaper than reading every field through JavaScriptBridge.
 func _js_to_gd(value):
 	if typeof(value) != TYPE_OBJECT or value == null:
 		return value
