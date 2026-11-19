@@ -15,6 +15,9 @@ var is_host : get = _is_host_getter
 var player_id : get = _player_id_getter
 var host_id : get = _host_id_getter
 var room_id : get = _room_id_getter
+# Region of the next created or matched room and of get_rooms(), e.g. "eu"; null until set_region(),
+# get_regions() or the first room call.
+var region : get = _region_getter
 var room : get = _room_getter
 var players : get = _players_getter
 var is_invite_supported : get = _is_invite_supported_getter
@@ -44,6 +47,9 @@ func _host_id_getter():
 
 func _room_id_getter():
 	return _js_multiplayer.roomId
+
+func _region_getter():
+	return _js_multiplayer.region
 
 func _room_getter():
 	_update_cache()
@@ -102,6 +108,9 @@ var _js_join_or_create_room_catch = JavaScriptBridge.create_callback(self._on_js
 var _get_rooms_callback = null
 var _js_get_rooms_then = JavaScriptBridge.create_callback(self._on_js_get_rooms_then)
 var _js_get_rooms_catch = JavaScriptBridge.create_callback(self._on_js_get_rooms_catch)
+var _get_regions_callback = null
+var _js_get_regions_then = JavaScriptBridge.create_callback(self._on_js_get_regions_then)
+var _js_get_regions_catch = JavaScriptBridge.create_callback(self._on_js_get_regions_catch)
 var _invite_to_room_callback = null
 var _js_invite_to_room_then = JavaScriptBridge.create_callback(self._on_js_invite_to_room_then)
 var _js_invite_to_room_catch = JavaScriptBridge.create_callback(self._on_js_invite_to_room_catch)
@@ -170,6 +179,17 @@ func get_rooms(options = null, callback = null):
 
 	promise.then(_js_get_rooms_then).catch(_js_get_rooms_catch)
 
+# The callback receives (success, regions): region ids for a region picker, e.g. ["eu", "us", "ap"].
+# Also sets region to the default one if it is still unknown.
+func get_regions(callback = null):
+	if _get_regions_callback != null:
+		return
+
+	_get_regions_callback = callback
+	_last_error = null
+
+	_js_multiplayer.getRegions().then(_js_get_regions_then).catch(_js_get_regions_catch)
+
 func invite_to_room(options = null, callback = null):
 	if _invite_to_room_callback != null:
 		return
@@ -187,6 +207,10 @@ func invite_to_room(options = null, callback = null):
 
 func leave_room():
 	_js_multiplayer.leaveRoom()
+
+# The current room stays where it is; join_room() by code always enters the region of the code.
+func set_region(region):
+	_js_multiplayer.setRegion(region)
 
 # Host only.
 func set_room_open(is_open):
@@ -318,6 +342,17 @@ func _on_js_get_rooms_catch(args):
 	if _get_rooms_callback != null:
 		_get_rooms_callback.call(false, [])
 		_get_rooms_callback = null
+
+func _on_js_get_regions_then(args):
+	if _get_regions_callback != null:
+		_get_regions_callback.call(true, _js_to_gd(args[0]))
+		_get_regions_callback = null
+
+func _on_js_get_regions_catch(args):
+	_last_error = _get_error_code(args[0])
+	if _get_regions_callback != null:
+		_get_regions_callback.call(false, [])
+		_get_regions_callback = null
 
 func _on_js_invite_to_room_then(args):
 	if _invite_to_room_callback != null:
