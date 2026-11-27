@@ -13,6 +13,10 @@ func get_entries(id, callback = null):
 	if callback != null:
 		callback.call(false, [])
 
+func get_info(id, callback = null):
+	if callback != null:
+		callback.call(false, null)
+
 func show_native_popup(id, callback = null):
 	if callback != null:
 		callback.call(false)

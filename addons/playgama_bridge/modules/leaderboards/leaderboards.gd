@@ -12,6 +12,9 @@ var _js_set_score_catch = JavaScriptBridge.create_callback(self._on_js_set_score
 var _get_entries_callback = null
 var _js_get_entries_then = JavaScriptBridge.create_callback(self._on_js_get_entries_then)
 var _js_get_entries_catch = JavaScriptBridge.create_callback(self._on_js_get_entries_catch)
+var _get_info_callback = null
+var _js_get_info_then = JavaScriptBridge.create_callback(self._on_js_get_info_then)
+var _js_get_info_catch = JavaScriptBridge.create_callback(self._on_js_get_info_catch)
 var _show_native_popup_callback = null
 var _js_show_native_popup_then = JavaScriptBridge.create_callback(self._on_js_show_native_popup_then)
 var _js_show_native_popup_catch = JavaScriptBridge.create_callback(self._on_js_show_native_popup_catch)
@@ -29,6 +32,15 @@ func get_entries(id, callback = null):
 	
 	_get_entries_callback = callback
 	_js_leaderboards.getEntries(id).then(_js_get_entries_then).catch(_js_get_entries_catch)
+
+# The callback receives (success, info): { id, period, time_left }, period is one of
+# Bridge.LeaderboardPeriod, time_left is whole seconds until the period resets, null for permanent.
+func get_info(id, callback = null):
+	if _get_info_callback != null:
+		return
+
+	_get_info_callback = callback
+	_js_leaderboards.getInfo(id).then(_js_get_info_then).catch(_js_get_info_catch)
 
 func show_native_popup(id, callback = null):
 	if _show_native_popup_callback != null:
@@ -74,6 +86,31 @@ func _on_js_get_entries_catch(args):
 	if _get_entries_callback != null:
 		_get_entries_callback.call(false, [])
 		_get_entries_callback = null
+
+func _on_js_get_info_then(args):
+	if _get_info_callback != null:
+		var data = args[0]
+		match typeof(data):
+			TYPE_OBJECT:
+				var time_left = data.timeLeft
+				var time_left_type = typeof(time_left)
+				if time_left_type == TYPE_INT or time_left_type == TYPE_FLOAT:
+					time_left = int(time_left)
+				else:
+					time_left = null
+				_get_info_callback.call(true, {
+					"id": data.id,
+					"period": data.period,
+					"time_left": time_left
+				})
+			_:
+				_get_info_callback.call(false, null)
+		_get_info_callback = null
+
+func _on_js_get_info_catch(args):
+	if _get_info_callback != null:
+		_get_info_callback.call(false, null)
+		_get_info_callback = null
 
 func _on_js_show_native_popup_then(args):
 	if _show_native_popup_callback != null:
