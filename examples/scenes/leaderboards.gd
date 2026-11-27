@@ -19,6 +19,8 @@ func _on_set_score_completed(success):
 
 func _on_get_entries_button_pressed():
 	var leaderboard_id = ""
+	# The permanent standings by default; pass a period from get_info() to read others:
+	# Bridge.leaderboards.get_entries(leaderboard_id, callback, Bridge.LeaderboardPeriod.DAILY)
 	Bridge.leaderboards.get_entries(leaderboard_id , Callable(self, "_on_get_entries_completed"))
 
 func _on_get_entries_completed(success, entries):
@@ -40,8 +42,11 @@ func _on_get_info_completed(success, info):
 	print(success)
 
 	if success:
-		print("Period: " + str(info.period))
-		print("Time Left: " + str(info.time_left))
+		print("Score Mode: " + str(info.score_mode))
+		print("Periods: " + str(info.periods))
+		print("Daily Time Left: " + str(info.time_left.daily))
+		print("Weekly Time Left: " + str(info.time_left.weekly))
+		print("Monthly Time Left: " + str(info.time_left.monthly))
 
 
 func _on_show_native_popup_button_pressed():

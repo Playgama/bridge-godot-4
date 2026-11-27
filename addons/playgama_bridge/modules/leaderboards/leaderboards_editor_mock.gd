@@ -9,7 +9,7 @@ func set_score(id, score, callback = null):
 	if callback != null:
 		callback.call(false)
 
-func get_entries(id, callback = null):
+func get_entries(id, callback = null, period = Bridge.LeaderboardPeriod.PERMANENT):
 	if callback != null:
 		callback.call(false, [])
 
