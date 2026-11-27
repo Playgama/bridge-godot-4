@@ -19,6 +19,8 @@ func _on_set_score_completed(success):
 
 func _on_get_entries_button_pressed():
 	var leaderboard_id = ""
+	# The permanent standings by default, pass a period to read others:
+	# Bridge.leaderboards.get_entries(leaderboard_id, callback, Bridge.LeaderboardPeriod.DAILY)
 	Bridge.leaderboards.get_entries(leaderboard_id , Callable(self, "_on_get_entries_completed"))
 
 func _on_get_entries_completed(success, entries):

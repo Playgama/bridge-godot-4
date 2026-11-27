@@ -6,6 +6,7 @@ func _type_getter():
 
 
 var _js_leaderboards = null
+var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 var _set_score_callback = null
 var _js_set_score_then = JavaScriptBridge.create_callback(self._on_js_set_score_then)
 var _js_set_score_catch = JavaScriptBridge.create_callback(self._on_js_set_score_catch)
@@ -16,6 +17,8 @@ var _show_native_popup_callback = null
 var _js_show_native_popup_then = JavaScriptBridge.create_callback(self._on_js_show_native_popup_then)
 var _js_show_native_popup_catch = JavaScriptBridge.create_callback(self._on_js_show_native_popup_catch)
 
+# On a leaderboard set to the sum score mode in the developer console the score is added to the
+# player's total: pass what the player earned, e.g. 120.
 func set_score(id, score, callback = null):
 	if _set_score_callback != null:
 		return
@@ -23,12 +26,14 @@ func set_score(id, score, callback = null):
 	_set_score_callback = callback
 	_js_leaderboards.setScore(id, score).then(_js_set_score_then).catch(_js_set_score_catch)
 
-func get_entries(id, callback = null):
+# period is one of Bridge.LeaderboardPeriod, the standings to read; platform leaderboards have only
+# the permanent one.
+func get_entries(id, callback = null, period = Bridge.LeaderboardPeriod.PERMANENT):
 	if _get_entries_callback != null:
 		return
 	
 	_get_entries_callback = callback
-	_js_leaderboards.getEntries(id).then(_js_get_entries_then).catch(_js_get_entries_catch)
+	_js_leaderboards.getEntries(id, _utils.convert_to_js({ "period": period })).then(_js_get_entries_then).catch(_js_get_entries_catch)
 
 func show_native_popup(id, callback = null):
 	if _show_native_popup_callback != null:
