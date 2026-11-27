@@ -60,13 +60,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3")
 text = "Show Native Popup"
 
-[node name="GetInfoButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="3"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
-text = "Get Info"
-
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/SetScoreButton" to="." method="_on_set_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetEntriesButton" to="." method="_on_get_entries_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ShowNativePopupButton" to="." method="_on_show_native_popup_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetInfoButton" to="." method="_on_get_info_button_pressed"]
